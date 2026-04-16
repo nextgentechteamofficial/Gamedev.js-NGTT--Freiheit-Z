@@ -1,3 +1,53 @@
 [gd_scene format=3 uid="uid://nrc57ehe7ch1"]
 
+[ext_resource type="Script" uid="uid://deukd8shjw1jh" path="res://Scenes/freiheit_z.gd" id="1_h0cnq"]
+[ext_resource type="Texture2D" uid="uid://4bw6cdxp1rvi" path="res://Assets/Placeholder Sprite Sheet.png" id="1_wwnfe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0cnq"]
+atlas = ExtResource("1_wwnfe")
+region = Rect2(0, 0, 38, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7r1gu"]
+atlas = ExtResource("1_wwnfe")
+region = Rect2(38, 0, 38, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18rav"]
+atlas = ExtResource("1_wwnfe")
+region = Rect2(76, 0, 38, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlumn"]
+atlas = ExtResource("1_wwnfe")
+region = Rect2(114, 0, 38, 63)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_06l37"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0cnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7r1gu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18rav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlumn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_savud"]
+radius = 4.0
+height = 56.0
+
 [node name="Freiheit-Z" type="CharacterBody2D" unique_id=800076182]
+script = ExtResource("1_h0cnq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=654517139]
+sprite_frames = SubResource("SpriteFrames_06l37")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1320281910]
+shape = SubResource("CapsuleShape2D_savud")
