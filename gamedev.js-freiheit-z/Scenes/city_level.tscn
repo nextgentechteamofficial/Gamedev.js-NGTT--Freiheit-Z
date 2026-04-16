@@ -1,3 +1,5 @@
 [gd_scene format=3 uid="uid://xbx125y5fd8k"]
 
 [node name="CityLevel" type="Node2D" unique_id=212214422]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1932900187]
