@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dlf8hqeiwvr7e"]
+
+[ext_resource type="Script" uid="uid://dgqp1hxo4lm6k" path="res://Scenes/civilian.gd" id="1_3cr5q"]
+[ext_resource type="Texture2D" uid="uid://xu3h815smqia" path="res://Assets/_sprite_collection_swl__dragon_ball_z_by_justoruma_dhxv2dx-fullview.jpg" id="1_g3mco"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cr5q"]
+atlas = ExtResource("1_g3mco")
+region = Rect2(364, 980, 26, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ndn5x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cr5q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="civilian" type="CharacterBody2D" unique_id=1742035033]
+script = ExtResource("1_3cr5q")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1383252819]
+sprite_frames = SubResource("SpriteFrames_ndn5x")
+
+[node name="Timer" type="Timer" parent="." unique_id=492040664]
+wait_time = 3.327
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

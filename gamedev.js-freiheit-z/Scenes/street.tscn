@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://0kvp3aijdtqb"]
+
+[ext_resource type="Texture2D" uid="uid://ce3ld8s4t7p4t" path="res://Assets/Road-night.png" id="1_4f3h7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6lt3"]
+atlas = ExtResource("1_4f3h7")
+region = Rect2(0, 240, 1280, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_or81d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6lt3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w684m"]
+size = Vector2(1265, 110)
+
+[node name="street" type="StaticBody2D" unique_id=1824621484]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2139243060]
+position = Vector2(534, 76)
+sprite_frames = SubResource("SpriteFrames_or81d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1428286712]
+position = Vector2(534.5, 72)
+shape = SubResource("RectangleShape2D_w684m")
