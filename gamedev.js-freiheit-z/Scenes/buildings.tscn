@@ -18,16 +18,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mi5tt"]
-size = Vector2(241.5, 594.5)
+size = Vector2(246.5, 598.5)
 
-[node name="Buildings" type="Area2D" unique_id=1227612147]
+[node name="Buildings" type="StaticBody2D" unique_id=996084412]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1850912156]
 position = Vector2(5, 0)
-scale = Vector2(1.0277778, 1)
+scale = Vector2(1.0156863, 1)
 sprite_frames = SubResource("SpriteFrames_xk5o8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1240331251]
-position = Vector2(3.25, -1.25)
+position = Vector2(5.75, 0.75)
 shape = SubResource("RectangleShape2D_mi5tt")
 debug_color = Color(0.7639719, 0.18718767, 0.987966, 0.41960785)

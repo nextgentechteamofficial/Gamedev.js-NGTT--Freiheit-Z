@@ -2,10 +2,54 @@
 
 [ext_resource type="PackedScene" uid="uid://bjqcvmpbimdj7" path="res://Scenes/buildings.tscn" id="1_f5x8c"]
 [ext_resource type="PackedScene" uid="uid://nrc57ehe7ch1" path="res://Scenes/freiheit-z.tscn" id="2_7yqgr"]
+[ext_resource type="PackedScene" uid="uid://0kvp3aijdtqb" path="res://Scenes/street.tscn" id="3_20och"]
+[ext_resource type="PackedScene" uid="uid://dlf8hqeiwvr7e" path="res://Scenes/civilian.tscn" id="4_xo8ej"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_20och"]
+distance = 15.0
 
 [node name="CityLevel" type="Node2D" unique_id=212214422]
 
-[node name="Buildings" parent="." unique_id=1227612147 instance=ExtResource("1_f5x8c")]
-position = Vector2(157, -9)
-
 [node name="Freiheit-Z" parent="." unique_id=800076182 instance=ExtResource("2_7yqgr")]
+position = Vector2(-34, 449)
+
+[node name="Buildings2" parent="." unique_id=1227612147 instance=ExtResource("1_f5x8c")]
+position = Vector2(197, 1)
+
+[node name="Buildings" parent="." unique_id=996084412 instance=ExtResource("1_f5x8c")]
+position = Vector2(568, 2)
+
+[node name="Buildings3" parent="." unique_id=2145090929 instance=ExtResource("1_f5x8c")]
+position = Vector2(928, -2)
+
+[node name="Buildings4" parent="." unique_id=61494558 instance=ExtResource("1_f5x8c")]
+position = Vector2(1271, -3)
+
+[node name="Buildings5" parent="." unique_id=1812842873 instance=ExtResource("1_f5x8c")]
+position = Vector2(1935, 6)
+
+[node name="Buildings6" parent="." unique_id=867981173 instance=ExtResource("1_f5x8c")]
+position = Vector2(1587, 2)
+
+[node name="street" parent="." unique_id=1824621484 instance=ExtResource("3_20och")]
+position = Vector2(181, 487)
+scale = Vector2(7.160001, 1)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1224712583]
+position = Vector2(548, 518)
+shape = SubResource("WorldBoundaryShape2D_20och")
+
+[node name="civilian" parent="." unique_id=1742035033 instance=ExtResource("4_xo8ej")]
+position = Vector2(307, 467)
+
+[node name="civilian2" parent="." unique_id=867178985 instance=ExtResource("4_xo8ej")]
+position = Vector2(429, 467)
+
+[node name="civilian3" parent="." unique_id=569129629 instance=ExtResource("4_xo8ej")]
+position = Vector2(375, 474)
+
+[node name="civilian4" parent="." unique_id=1091537779 instance=ExtResource("4_xo8ej")]
+position = Vector2(503, 464)
+
+[node name="civilian5" parent="." unique_id=1384772953 instance=ExtResource("4_xo8ej")]
+position = Vector2(249, 471)
