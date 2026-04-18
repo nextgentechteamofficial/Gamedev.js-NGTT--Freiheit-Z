@@ -4,11 +4,15 @@ extends CharacterBody2D
 @export var speed = 500.0
 @export var jump_velocity = -400.0
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
+const PROJECTILE = preload("uid://dbnijstff0fso")
+
 
 func aiming(delta: float) -> void:
 	var mouse_pos = get_local_mouse_position()
 	ray_cast_2d.target_position = mouse_pos
-	print(mouse_pos)
+	var blast := PROJECTILE.instantiate()
+	blast.position = ray_cast_2d.target_position
+	get_parent().add_child(blast)
 	
 
 
