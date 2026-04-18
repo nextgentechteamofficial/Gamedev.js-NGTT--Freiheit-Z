@@ -4,12 +4,11 @@ extends CharacterBody2D
 @export var speed = 500.0
 @export var jump_velocity = -400.0
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
-@onready var sprite_2d: Sprite2D = $RayCast2D/Sprite2D
 
 func aiming(delta: float) -> void:
-	var mouse_pos = get_global_mouse_position()
+	var mouse_pos = get_local_mouse_position()
 	ray_cast_2d.target_position = mouse_pos
-	
+	print(mouse_pos)
 	
 
 
