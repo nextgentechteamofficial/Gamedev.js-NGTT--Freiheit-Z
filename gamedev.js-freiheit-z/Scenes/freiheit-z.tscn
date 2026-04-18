@@ -48,8 +48,12 @@ script = ExtResource("1_h0cnq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=654517139]
 sprite_frames = SubResource("SpriteFrames_06l37")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1320281910]
 shape = SubResource("CapsuleShape2D_savud")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1051708707]
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=254897948]
+collide_with_areas = true
