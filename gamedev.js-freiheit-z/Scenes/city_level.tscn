@@ -1,5 +1,11 @@
 [gd_scene format=3 uid="uid://xbx125y5fd8k"]
 
+[ext_resource type="PackedScene" uid="uid://bjqcvmpbimdj7" path="res://Scenes/buildings.tscn" id="1_f5x8c"]
+[ext_resource type="PackedScene" uid="uid://nrc57ehe7ch1" path="res://Scenes/freiheit-z.tscn" id="2_7yqgr"]
+
 [node name="CityLevel" type="Node2D" unique_id=212214422]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1932900187]
+[node name="Buildings" parent="." unique_id=1227612147 instance=ExtResource("1_f5x8c")]
+position = Vector2(157, -9)
+
+[node name="Freiheit-Z" parent="." unique_id=800076182 instance=ExtResource("2_7yqgr")]
