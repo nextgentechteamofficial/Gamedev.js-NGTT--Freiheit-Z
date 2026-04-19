@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 @export var speed = 300.0
+
 @onready var timer: Timer = $Timer
 var direction := 1
 

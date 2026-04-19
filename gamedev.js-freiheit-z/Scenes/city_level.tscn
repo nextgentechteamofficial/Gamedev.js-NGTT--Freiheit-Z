@@ -9,12 +9,13 @@
 distance = 15.0
 
 [node name="CityLevel" type="Node2D" unique_id=212214422]
+position = Vector2(2658, -762)
 
 [node name="Freiheit-Z" parent="." unique_id=800076182 instance=ExtResource("2_7yqgr")]
 position = Vector2(-34, 449)
 
 [node name="Buildings2" parent="." unique_id=1227612147 instance=ExtResource("1_f5x8c")]
-position = Vector2(197, 1)
+position = Vector2(192, -2)
 
 [node name="Buildings" parent="." unique_id=996084412 instance=ExtResource("1_f5x8c")]
 position = Vector2(568, 2)
@@ -49,7 +50,7 @@ position = Vector2(429, 467)
 position = Vector2(375, 474)
 
 [node name="civilian4" parent="." unique_id=1091537779 instance=ExtResource("4_xo8ej")]
-position = Vector2(503, 464)
+position = Vector2(513, 459)
 
 [node name="civilian5" parent="." unique_id=1384772953 instance=ExtResource("4_xo8ej")]
 position = Vector2(249, 471)
