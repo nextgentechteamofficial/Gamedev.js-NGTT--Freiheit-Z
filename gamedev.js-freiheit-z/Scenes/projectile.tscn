@@ -53,7 +53,7 @@ script = ExtResource("1_k1cl8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=325098599]
 sprite_frames = SubResource("SpriteFrames_5i1ty")
-animation = &"new_animation"
+animation = &"Projectile"
 autoplay = "Projectile"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1197634961]
