@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://bjqcvmpbimdj7"]
 
-[ext_resource type="Texture2D" uid="uid://b1bn45ok5rvke" path="res://Assets/dccstgf-ab842bea-1907-4dd3-9fee-921f7d06e015.png" id="1_lhg5x"]
+[ext_resource type="Texture2D" uid="uid://b3o4xul3lrwkg" path="res://Assets/Freiheit-z building.png" id="1_21q7u"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5idg8"]
-atlas = ExtResource("1_lhg5x")
-region = Rect2(0, 0, 252, 616)
+[sub_resource type="AtlasTexture" id="AtlasTexture_frbao"]
+atlas = ExtResource("1_21q7u")
+region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xk5o8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5idg8")
+"texture": SubResource("AtlasTexture_frbao")
 }],
 "loop": true,
 "name": &"default",
@@ -18,16 +18,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mi5tt"]
-size = Vector2(246.5, 598.5)
+size = Vector2(303, 482)
 
 [node name="Buildings" type="StaticBody2D" unique_id=996084412]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1850912156]
 position = Vector2(5, 0)
-scale = Vector2(1.0156863, 1)
+scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_xk5o8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1240331251]
-position = Vector2(5.75, 0.75)
+position = Vector2(5.5, 71)
 shape = SubResource("RectangleShape2D_mi5tt")
 debug_color = Color(0.7639719, 0.18718767, 0.987966, 0.41960785)
