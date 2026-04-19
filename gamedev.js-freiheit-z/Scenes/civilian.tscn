@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dlf8hqeiwvr7e"]
 
-[ext_resource type="Script" uid="uid://dgqp1hxo4lm6k" path="res://Scenes/civilian.gd" id="1_3cr5q"]
+[ext_resource type="Script" uid="uid://dgqp1hxo4lm6k" path="res://Scripts/civilian.gd" id="1_3cr5q"]
 [ext_resource type="Texture2D" uid="uid://xu3h815smqia" path="res://Assets/_sprite_collection_swl__dragon_ball_z_by_justoruma_dhxv2dx-fullview.jpg" id="1_g3mco"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3cr5q"]
@@ -18,7 +18,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="civilian" type="CharacterBody2D" unique_id=1742035033]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3cr5q"]
+
+[node name="civilian" type="CharacterBody2D" unique_id=1742035033 groups=["civilians"]]
 script = ExtResource("1_3cr5q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1383252819]
@@ -29,4 +31,12 @@ wait_time = 3.327
 one_shot = true
 autostart = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1584971260]
+position = Vector2(-1, 8)
+shape = SubResource("CapsuleShape2D_3cr5q")
+
+[node name="dps timer" type="Timer" parent="." unique_id=1998621097]
+one_shot = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="dps timer" to="." method="_on_dps_timer_timeout"]

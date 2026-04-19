@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var speed = 500.0
 @export var jump_velocity = -400.0
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
-const PROJECTILE = preload("uid://dbnijstff0fso")
+const PROJECTILE = preload("uid://c2qdn0wcuswvm")
 
 
 func aiming(delta: float) -> void:
@@ -16,7 +16,7 @@ func aiming(delta: float) -> void:
 		blast.position = global_position
 		blast.global_rotation = direction.angle()
 		get_parent().add_child(blast)
-		print(direction.angle())
+		
 		
 
 func is_shooting() -> bool:
