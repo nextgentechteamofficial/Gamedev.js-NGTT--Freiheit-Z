@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://nrc57ehe7ch1"]
 
-[ext_resource type="Script" uid="uid://deukd8shjw1jh" path="res://Scenes/freiheit_z.gd" id="1_h0cnq"]
+[ext_resource type="Script" uid="uid://deukd8shjw1jh" path="res://Scripts/freiheit_z.gd" id="1_h0cnq"]
 [ext_resource type="Texture2D" uid="uid://4bw6cdxp1rvi" path="res://Assets/Placeholder Sprite Sheet.png" id="1_wwnfe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h0cnq"]
@@ -43,14 +43,14 @@ animations = [{
 radius = 4.0
 height = 56.0
 
-[node name="Freiheit-Z" type="CharacterBody2D" unique_id=800076182]
+[node name="Freiheit-Z" type="CharacterBody2D" unique_id=800076182 groups=["Player"]]
 script = ExtResource("1_h0cnq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=654517139]
 sprite_frames = SubResource("SpriteFrames_06l37")
 autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1320281910]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1320281910 groups=["Player"]]
 shape = SubResource("CapsuleShape2D_savud")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1051708707]

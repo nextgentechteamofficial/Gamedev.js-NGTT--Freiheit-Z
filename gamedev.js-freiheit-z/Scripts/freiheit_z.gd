@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-
+@onready var freiheit_z: CharacterBody2D = $"."
 @export var speed = 500.0
 @export var jump_velocity = -400.0
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
@@ -10,9 +10,22 @@ const PROJECTILE = preload("uid://dbnijstff0fso")
 func aiming(delta: float) -> void:
 	var mouse_pos = get_local_mouse_position()
 	ray_cast_2d.target_position = mouse_pos
-	var blast := PROJECTILE.instantiate()
-	blast.position = ray_cast_2d.target_position
-	get_parent().add_child(blast)
+	if (is_shooting()):
+		var blast := PROJECTILE.instantiate()
+		var direction = (get_global_mouse_position() - global_position).normalized()
+		blast.position = global_position
+		blast.global_rotation = direction.angle()
+		get_parent().add_child(blast)
+		print(direction.angle())
+		
+
+func is_shooting() -> bool:
+	var is_shooting = false
+	if (Input.is_action_just_pressed("Attack")):
+		is_shooting = true
+	else:
+		is_shooting = false
+	return is_shooting
 	
 
 

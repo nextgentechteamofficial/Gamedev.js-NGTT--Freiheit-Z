@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dbnijstff0fso"]
 
+[ext_resource type="Script" uid="uid://voj7h33wpehu" path="res://Scripts/projectile.gd" id="1_k1cl8"]
 [ext_resource type="Texture2D" uid="uid://c33g01g07ka40" path="res://Assets/dblzocq-9f2a9cf8-7e55-4b56-9a05-ca99f2cf08cf.png" id="1_lal66"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k1cl8"]
@@ -34,7 +35,12 @@ animations = [{
 "texture": SubResource("AtlasTexture_ds7j7")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Projectile",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
 "speed": 5.0
 }]
 
@@ -42,13 +48,19 @@ animations = [{
 radius = 21.0
 height = 120.0
 
-[node name="Projectile" type="Area2D" unique_id=185864183]
+[node name="Projectile" type="Area2D" unique_id=1749481696]
+script = ExtResource("1_k1cl8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=325098599]
 sprite_frames = SubResource("SpriteFrames_5i1ty")
-autoplay = "default"
-frame_progress = 0.511299
+animation = &"new_animation"
+autoplay = "Projectile"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1197634961]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_lal66")
+
+[node name="Timer" type="Timer" parent="." unique_id=2062624973]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
