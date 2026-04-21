@@ -7,7 +7,9 @@ extends CharacterBody2D
 @onready var dps_timer: Timer = $"dps timer"
 var damage = 0
 var direction := 1
+const MACHINE_PARTS = preload("uid://gciiw2pycb1i")
 
+@export var collectible: PackedScene =MACHINE_PARTS
 func _physics_process(delta: float) -> void:
 	die()
 	
@@ -52,4 +54,6 @@ func start_dps_timer() -> void:
 		dps_timer.start()
 func set_damage(damage2: int) -> void:
 	damage = damage2
+	
+
 	
