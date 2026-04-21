@@ -6,6 +6,7 @@ extends Area2D
 @export var timer_time = 1
 @onready var timer: Timer = $Timer
 @export var damage = 50
+@export var attack_cost := 15.0
 
 var has_exploded = false
 # Called when the node enters the scene tree for the first time.
