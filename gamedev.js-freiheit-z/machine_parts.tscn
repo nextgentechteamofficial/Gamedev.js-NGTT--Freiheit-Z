@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://gciiw2pycb1i"]
+
+[ext_resource type="Script" uid="uid://d35lxc4vrprca" path="res://machine_parts.gd" id="1_sqhsw"]
+[ext_resource type="Texture2D" uid="uid://cknj5jv8qo3eg" path="res://Assets/1000_F_644928938_svLxfGQFlYBuYvBxYaVhZEcsU8XsgfXW.jpg" id="1_t3cir"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqhsw"]
+atlas = ExtResource("1_t3cir")
+region = Rect2(700, 399, 100, 133)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yegpo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqhsw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pb3ty"]
+radius = 52.611786
+
+[node name="Machine parts" type="Area2D" unique_id=1778627205]
+script = ExtResource("1_sqhsw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=45547429]
+position = Vector2(0.5, 0.75)
+scale = Vector2(0.99, 1.0112782)
+sprite_frames = SubResource("SpriteFrames_yegpo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1116930946]
+position = Vector2(18, -15)
+shape = SubResource("CircleShape2D_pb3ty")
