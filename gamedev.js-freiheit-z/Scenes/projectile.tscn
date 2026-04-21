@@ -51,6 +51,7 @@ height = 120.0
 [node name="Projectile" type="Area2D" unique_id=1749481696]
 collision_mask = 3
 script = ExtResource("1_k1cl8")
+attack_cost = 5.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=325098599]
 sprite_frames = SubResource("SpriteFrames_5i1ty")
