@@ -57,3 +57,8 @@ shape = SubResource("CapsuleShape2D_savud")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=254897948]
 collide_with_areas = true
+
+[node name="Timer" type="Timer" parent="." unique_id=1976721326]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
