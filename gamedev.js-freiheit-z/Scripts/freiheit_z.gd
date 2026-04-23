@@ -8,6 +8,15 @@ const PROJECTILE = preload("uid://dbnijstff0fso")
 @export var fuel = 100.0
 @export var fuel_usagerate = 2.0
 @onready var timer: Timer = $Timer
+@export var lvl_max := 3
+@export var xp_needed :=2000
+var current_lvl := 1
+var current_xp := 1000
+func lvl_up() -> void:
+	if (current_xp >= xp_needed and current_lvl <= lvl_max):
+		print("leveled up")
+		current_xp -= xp_needed
+		current_lvl += 1
 
 func aiming(delta: float) -> void:
 	var mouse_pos = get_local_mouse_position()
@@ -36,7 +45,9 @@ func is_shooting() -> bool:
 
 
 func _physics_process(delta: float) -> void:
-	print(fuel)
+	print(fuel) 
+	print(current_lvl)
+	lvl_up()
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("Move Left ", "Move Right")
