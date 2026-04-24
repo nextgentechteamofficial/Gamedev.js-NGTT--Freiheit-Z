@@ -1,19 +1,19 @@
 [gd_scene format=3 uid="uid://dlf8hqeiwvr7e"]
 
 [ext_resource type="Script" uid="uid://dgqp1hxo4lm6k" path="res://Scripts/civilian.gd" id="1_3cr5q"]
-[ext_resource type="Texture2D" uid="uid://xu3h815smqia" path="res://Assets/_sprite_collection_swl__dragon_ball_z_by_justoruma_dhxv2dx-fullview.jpg" id="1_g3mco"]
+[ext_resource type="Texture2D" uid="uid://rgeyjfajqpss" path="res://Assets/civilian1.png" id="2_3cr5q"]
 
 [sub_resource type="PackedScene" id="PackedScene_3cr5q"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3cr5q"]
-atlas = ExtResource("1_g3mco")
-region = Rect2(364, 980, 26, 49)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndn5x"]
+atlas = ExtResource("2_3cr5q")
+region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ndn5x"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3cr5q")
+"texture": SubResource("AtlasTexture_ndn5x")
 }],
 "loop": true,
 "name": &"default",
@@ -21,6 +21,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3cr5q"]
+radius = 12.0
+height = 44.0
 
 [node name="civilian" type="CharacterBody2D" unique_id=1742035033 groups=["civilians"]]
 collision_layer = 2
@@ -28,6 +30,8 @@ script = ExtResource("1_3cr5q")
 collectible = SubResource("PackedScene_3cr5q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1383252819]
+position = Vector2(-1, 5)
+scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_ndn5x")
 
 [node name="Timer" type="Timer" parent="." unique_id=492040664]

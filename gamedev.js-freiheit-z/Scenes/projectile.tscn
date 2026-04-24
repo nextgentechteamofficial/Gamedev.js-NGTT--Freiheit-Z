@@ -1,38 +1,17 @@
 [gd_scene format=3 uid="uid://dbnijstff0fso"]
 
 [ext_resource type="Script" uid="uid://voj7h33wpehu" path="res://Scripts/projectile.gd" id="1_k1cl8"]
-[ext_resource type="Texture2D" uid="uid://c33g01g07ka40" path="res://Assets/dblzocq-9f2a9cf8-7e55-4b56-9a05-ca99f2cf08cf.png" id="1_lal66"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k1cl8"]
-atlas = ExtResource("1_lal66")
-region = Rect2(561, 232, 187, 116)
+[ext_resource type="Texture2D" uid="uid://ddaqmr8ishn8p" path="res://Assets/projectile_explosion_sprite1.png" id="2_k1cl8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y0kec"]
-atlas = ExtResource("1_lal66")
-region = Rect2(374, 232, 187, 116)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0tri7"]
-atlas = ExtResource("1_lal66")
-region = Rect2(187, 232, 187, 116)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ds7j7"]
-atlas = ExtResource("1_lal66")
-region = Rect2(0, 232, 187, 116)
+atlas = ExtResource("2_k1cl8")
+region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5i1ty"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k1cl8")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_y0kec")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0tri7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ds7j7")
 }],
 "loop": true,
 "name": &"Projectile",
