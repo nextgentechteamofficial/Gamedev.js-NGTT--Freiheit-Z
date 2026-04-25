@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bmun4t8ibvmye"]
+
+[ext_resource type="Script" uid="uid://cer6yfnw5plek" path="res://Scripts/grenade.gd" id="1_5rnft"]
+[ext_resource type="Texture2D" uid="uid://hg1jqaac552y" path="res://Assets/Grenade.png" id="2_5rnft"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5rnft"]
+radius = 29.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ft0g1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5rnft")
+}],
+"loop": true,
+"name": &"Projectile",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5rnft"]
+radius = 29.0
+height = 58.0
+
+[node name="Projectile" type="Area2D" unique_id=1749481696]
+collision_mask = 3
+script = ExtResource("1_5rnft")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=556215233]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=1857660863]
+shape = SubResource("CircleShape2D_5rnft")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D" unique_id=325098599]
+sprite_frames = SubResource("SpriteFrames_ft0g1")
+animation = &"Projectile"
+autoplay = "Projectile"
+
+[node name="Timer" type="Timer" parent="." unique_id=2062624973]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1197634961]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_5rnft")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

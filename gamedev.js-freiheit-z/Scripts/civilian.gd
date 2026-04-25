@@ -9,10 +9,19 @@ var damage = 0
 var direction := 1
 const MACHINE_PARTS = preload("uid://gciiw2pycb1i")
 
-@export var collectible: PackedScene =MACHINE_PARTS
+
+func drop_machine_parts() -> void:
+	
+	if Input.is_action_just_pressed("Debug"):
+		print("67")
+		var machine_parts = MACHINE_PARTS.instantiate()
+		machine_parts.position = global_position
+		get_parent().add_child(machine_parts)
+		if (machine_parts.has_method("civilian_drops")):
+			machine_parts.civilian_drops()
 func _physics_process(delta: float) -> void:
 	die()
-	
+	drop_machine_parts()
 	
 
 	

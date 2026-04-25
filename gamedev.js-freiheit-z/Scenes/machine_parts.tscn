@@ -32,3 +32,5 @@ sprite_frames = SubResource("SpriteFrames_yegpo")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1116930946]
 position = Vector2(18, -15)
 shape = SubResource("CircleShape2D_pb3ty")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
