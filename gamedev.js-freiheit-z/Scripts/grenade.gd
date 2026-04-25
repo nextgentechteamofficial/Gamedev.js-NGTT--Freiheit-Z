@@ -2,6 +2,7 @@ extends Area2D
 
 @export var speed = 200
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var collision_shape_2d_riggedbody: CollisionShape2D = $RigidBody2D/CollisionShape2D
 @export var explosion_scale := 5
 @export var timer_time = 1
 @onready var timer: Timer = $Timer
@@ -21,7 +22,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if (has_exploded == false):
 		pass
-
+	collision_shape_2d.global_position = collision_shape_2d_riggedbody.global_position
 
 	
 
@@ -42,6 +43,7 @@ func _on_body_entered(body: Node2D) -> void:
 				
 			
 		if (has_exploded == false):
+			
 			collision_shape_2d.apply_scale(scale_factor)
 			has_exploded = true
 			timer.start()
