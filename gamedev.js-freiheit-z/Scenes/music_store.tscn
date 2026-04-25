@@ -19,7 +19,9 @@ size = Vector2(88, 49)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3cb52"]
 height = 74.0
 
-[node name="music_store" type="Area2D" unique_id=213656932]
+[node name="music_store" type="StaticBody2D" unique_id=754281841]
+scale = Vector2(1.4018216, 1.4018216)
+collision_layer = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=618957928]
 sprite_frames = SubResource("SpriteFrames_ontv8")

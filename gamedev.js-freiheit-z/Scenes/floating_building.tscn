@@ -16,7 +16,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_lhqmx"]
 radius = 46.0
 
-[node name="floating_building" type="Area2D" unique_id=2004961822]
+[node name="floating_building" type="StaticBody2D" unique_id=1837378663]
+scale = Vector2(2.0262089, 2.0262089)
+collision_layer = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1072426499]
 sprite_frames = SubResource("SpriteFrames_amjqv")
