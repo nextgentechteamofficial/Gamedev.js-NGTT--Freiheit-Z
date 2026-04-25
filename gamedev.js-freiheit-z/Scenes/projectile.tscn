@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dbnijstff0fso"]
 
 [ext_resource type="Script" uid="uid://voj7h33wpehu" path="res://Scripts/projectile.gd" id="1_k1cl8"]
-[ext_resource type="Texture2D" uid="uid://ddaqmr8ishn8p" path="res://Assets/projectile_explosion_sprite1.png" id="2_k1cl8"]
+[ext_resource type="Texture2D" uid="uid://ddaqmr8ishn8p" path="res://Assets/projectile_explosion_sprite1.png" id="3_y0kec"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y0kec"]
-atlas = ExtResource("2_k1cl8")
+atlas = ExtResource("3_y0kec")
 region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5i1ty"]
@@ -24,8 +24,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lal66"]
-radius = 21.0
-height = 120.0
+radius = 29.0
+height = 130.0
 
 [node name="Projectile" type="Area2D" unique_id=1749481696]
 collision_mask = 3

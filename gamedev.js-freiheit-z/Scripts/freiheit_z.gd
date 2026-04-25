@@ -5,19 +5,40 @@ extends CharacterBody2D
 @export var jump_velocity = -400.0
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 const PROJECTILE = preload("uid://dbnijstff0fso")
+const GRENADE = preload("uid://bmun4t8ibvmye")
+
+
 @export var fuel = 100.0
 @export var fuel_usagerate = 2.0
 @onready var timer: Timer = $Timer
 @export var lvl_max := 3
-@export var xp_needed :=2000
+@export var xp_needed := 2000
 var current_lvl := 1
-var current_xp := 1000
+var current_xp := 0
+func handle_current_weapons() -> void:
+	pass
+func collect_parts(fuel_amount: float, xp_amount: int) -> void:
+	current_xp += xp_amount
+	fuel += fuel_amount
+	
 func lvl_up() -> void:
-	if (current_xp >= xp_needed and current_lvl <= lvl_max):
+	if (current_xp >= xp_needed and current_lvl < lvl_max):
 		print("leveled up")
 		current_xp -= xp_needed
 		current_lvl += 1
-
+func grenade_shot() -> void:
+	var mouse_pos = get_local_mouse_position()
+	ray_cast_2d.target_position = mouse_pos
+	if (is_shooting()):
+		var grenade := GRENADE.instantiate()
+		if fuel < grenade.attack_cost:
+			grenade.free()
+			return
+		fuel -= grenade.attack_cost
+		var direction = (get_global_mouse_position() - global_position).normalized()
+		grenade.position = global_position
+		grenade.global_rotation = direction.angle()
+		get_parent().add_child(grenade)
 func aiming(delta: float) -> void:
 	var mouse_pos = get_local_mouse_position()
 	ray_cast_2d.target_position = mouse_pos
@@ -45,7 +66,8 @@ func is_shooting() -> bool:
 
 
 func _physics_process(delta: float) -> void:
-	print(fuel) 
+	print(fuel)
+	print(current_xp)
 	print(current_lvl)
 	lvl_up()
 	# Get the input direction and handle the movement/deceleration.
@@ -61,8 +83,8 @@ func _physics_process(delta: float) -> void:
 		velocity.y = up_direction * speed
 	else:
 		velocity.y = move_toward(velocity.y, 0, speed)
-		
-	aiming(delta)
+	grenade_shot()
+	
 	fuel_system()
 	fuel_death()
 	move_and_slide()
