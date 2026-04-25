@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dfy8gpcp0j5ao"]
+
+[ext_resource type="Texture2D" uid="uid://v7ogcvdk6ye" path="res://Assets/BUILDING_02.png" id="1_onqsn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o7ijv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_onqsn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fl1iq"]
+size = Vector2(42, 118)
+
+[node name="tall_building" type="StaticBody2D" unique_id=567137181]
+scale = Vector2(1.810297, 1.810297)
+collision_layer = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=298498660]
+sprite_frames = SubResource("SpriteFrames_o7ijv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1073996381]
+position = Vector2(-8, 0)
+shape = SubResource("RectangleShape2D_fl1iq")
