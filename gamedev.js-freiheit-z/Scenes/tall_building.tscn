@@ -17,7 +17,7 @@ animations = [{
 size = Vector2(42, 118)
 
 [node name="tall_building" type="StaticBody2D" unique_id=567137181]
-scale = Vector2(1.810297, 1.810297)
+scale = Vector2(10, 10)
 collision_layer = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=298498660]
