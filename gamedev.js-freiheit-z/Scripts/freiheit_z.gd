@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 const PROJECTILE = preload("uid://dbnijstff0fso")
 const GRENADE = preload("uid://bmun4t8ibvmye")
+const AXE = preload("uid://csb56d5flb8vd")
 
 
 @export var fuel = 100.0
@@ -13,6 +14,7 @@ const GRENADE = preload("uid://bmun4t8ibvmye")
 @onready var timer: Timer = $Timer
 @export var lvl_max := 3
 @export var xp_needed := 2000
+@onready var treiheit_axe: Node2D = $treiheit_axe
 var current_lvl := 1
 var current_xp := 0
 func handle_current_weapons() -> void:
@@ -54,7 +56,25 @@ func aiming(delta: float) -> void:
 		get_parent().add_child(blast)
 		
 		
+func _ready() -> void:
+	treiheit_axe = AXE.instantiate()
+	add_child(treiheit_axe)
 
+func axe_attack() -> void:
+	
+	if is_melee():
+		treiheit_axe.animated_sprite_2d.visible = true
+		treiheit_axe.collision_shape_2d.visible = true
+		treiheit_axe.start_timer()
+		if fuel < treiheit_axe.axe_cost:
+			
+			
+			return
+		fuel -= treiheit_axe.axe_cost
+		
+	var offset := Vector2(40,-30)
+	var new_position := Vector2((offset.x + global_position.x), (offset.y + global_position.y))
+	treiheit_axe.global_position = new_position
 func is_shooting() -> bool:
 	var is_shooting = false
 	if (Input.is_action_just_pressed("Attack")):
@@ -63,12 +83,16 @@ func is_shooting() -> bool:
 		is_shooting = false
 	return is_shooting
 	
-
+func is_melee() -> bool:
+	var is_melee = false
+	if (Input.is_action_just_pressed("Melee")):
+		is_melee = true
+	else:
+		is_melee = false
+	return is_melee
 
 func _physics_process(delta: float) -> void:
 	print(fuel)
-	print(current_xp)
-	print(current_lvl)
 	lvl_up()
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -84,7 +108,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.y = move_toward(velocity.y, 0, speed)
 	grenade_shot()
-	
+	axe_attack()
 	fuel_system()
 	fuel_death()
 	move_and_slide()
