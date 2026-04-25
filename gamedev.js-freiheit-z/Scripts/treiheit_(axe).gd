@@ -9,7 +9,8 @@ extends Area2D
 
 func _ready() -> void:
 	print("ready")
-	$CollisionShape2D.disabled = false
+	collision_shape_2d.disabled = true
+	animated_sprite_2d.visible = false
 	timer.wait_time = timer_time
 	print("200 pump")
 	
@@ -26,7 +27,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_timer_timeout() -> void:
 	animated_sprite_2d.visible = false
-	collision_shape_2d.visible = false
+	collision_shape_2d.disabled = true
 
 func start_timer() -> void:
 	if timer.is_stopped():

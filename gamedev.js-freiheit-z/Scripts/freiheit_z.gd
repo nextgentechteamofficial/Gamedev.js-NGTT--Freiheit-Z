@@ -17,8 +17,26 @@ const AXE = preload("uid://csb56d5flb8vd")
 @onready var treiheit_axe: Node2D = $treiheit_axe
 var current_lvl := 1
 var current_xp := 0
+
+enum weaponState {ONE, TWO, THREE}
+var weapon_state = weaponState.ONE
+
+func unlock_weapon_for_level(lvl: int) -> void:
+	match lvl:
+		1: weapon_state = weaponState.ONE
+		2: weapon_state = weaponState.TWO
+		3: weapon_state = weaponState.THREE
 func handle_current_weapons() -> void:
-	pass
+	match weapon_state:
+		weaponState.ONE:
+			grenade_shot()
+		weaponState.TWO:
+			grenade_shot()
+			axe_attack()
+		weaponState.THREE:
+			aiming(0.0)
+			axe_attack()
+			grenade_shot()
 func collect_parts(fuel_amount: float, xp_amount: int) -> void:
 	current_xp += xp_amount
 	fuel += fuel_amount
@@ -28,10 +46,11 @@ func lvl_up() -> void:
 		print("leveled up")
 		current_xp -= xp_needed
 		current_lvl += 1
+		unlock_weapon_for_level(current_lvl)
 func grenade_shot() -> void:
 	var mouse_pos = get_local_mouse_position()
 	ray_cast_2d.target_position = mouse_pos
-	if (is_shooting()):
+	if (is_throwing_grenade()):
 		var grenade := GRENADE.instantiate()
 		if fuel < grenade.attack_cost:
 			grenade.free()
@@ -64,7 +83,7 @@ func axe_attack() -> void:
 	
 	if is_melee():
 		treiheit_axe.animated_sprite_2d.visible = true
-		treiheit_axe.collision_shape_2d.visible = true
+		treiheit_axe.collision_shape_2d.disabled = false
 		treiheit_axe.start_timer()
 		if fuel < treiheit_axe.axe_cost:
 			
@@ -82,7 +101,13 @@ func is_shooting() -> bool:
 	else:
 		is_shooting = false
 	return is_shooting
-	
+func is_throwing_grenade() -> bool:
+	var is_throwing_grenade = false
+	if(Input.is_action_just_pressed("Grenade")):
+		is_throwing_grenade = true
+	else:
+		is_throwing_grenade = false
+	return is_throwing_grenade	
 func is_melee() -> bool:
 	var is_melee = false
 	if (Input.is_action_just_pressed("Melee")):
@@ -93,6 +118,7 @@ func is_melee() -> bool:
 
 func _physics_process(delta: float) -> void:
 	print(fuel)
+	print(current_lvl)
 	lvl_up()
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -107,8 +133,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = up_direction * speed
 	else:
 		velocity.y = move_toward(velocity.y, 0, speed)
-	grenade_shot()
-	axe_attack()
+	handle_current_weapons()
 	fuel_system()
 	fuel_death()
 	move_and_slide()

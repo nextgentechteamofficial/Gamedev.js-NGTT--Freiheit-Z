@@ -20,6 +20,7 @@ height = 126.0
 
 [node name="Freiheit-Z" type="CharacterBody2D" unique_id=800076182 groups=["Player"]]
 scale = Vector2(1.5, 1.5)
+collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_h0cnq")
 
