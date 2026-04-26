@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dgqp1hxo4lm6k" path="res://Scripts/civilian.gd" id="1_3cr5q"]
 [ext_resource type="Texture2D" uid="uid://rgeyjfajqpss" path="res://Assets/civilian1.png" id="2_3cr5q"]
+[ext_resource type="PackedScene" uid="uid://dpup1p3gtnqmn" path="res://Scenes/fuel_bar.tscn" id="3_ndn5x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ndn5x"]
 atlas = ExtResource("2_3cr5q")
@@ -45,6 +46,13 @@ shape = SubResource("CapsuleShape2D_3cr5q")
 [node name="dps timer" type="Timer" parent="." unique_id=1998621097]
 wait_time = 0.1
 one_shot = true
+
+[node name="FuelBar" parent="." unique_id=1093010173 instance=ExtResource("3_ndn5x")]
+offset_left = -19.5
+offset_top = -21.000004
+offset_right = 220.5
+offset_bottom = -1.0000038
+scale = Vector2(0.1502142, 0.3093467)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="dps timer" to="." method="_on_dps_timer_timeout"]

@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dpup1p3gtnqmn"]
+
+[ext_resource type="Script" uid="uid://c0phcplwkk0gk" path="res://Scripts/fuel_bar.gd" id="1_8mspn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ev73"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8mspn"]
+bg_color = Color(0.63271075, 0.21406865, 0.12993938, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ev73"]
+bg_color = Color(0.2520276, 0.25202766, 0.25202754, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+shadow_color = Color(0, 0, 0, 0.27450982)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ommxa"]
+bg_color = Color(0.8562513, 0.7922725, 0.74180245, 1)
+
+[node name="FuelBar" type="ProgressBar" unique_id=1093010173]
+z_index = 1
+offset_right = 240.0
+offset_bottom = 20.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_0ev73")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8mspn")
+value = 60.0
+show_percentage = false
+script = ExtResource("1_8mspn")
+
+[node name="UseageBar" type="ProgressBar" parent="." unique_id=193916833]
+z_index = -1
+layout_mode = 0
+offset_right = 240.0
+offset_bottom = 20.0
+theme_override_styles/background = SubResource("StyleBoxFlat_0ev73")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ommxa")
+value = 80.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="." unique_id=208852478]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -12,7 +12,10 @@ var direction := 1
 var has_dropped := false
 var is_dead :=false
 const MACHINE_PARTS = preload("uid://gciiw2pycb1i")
+@onready var fuel_bar: ProgressBar = $FuelBar
 
+func _ready() -> void:
+	fuel_bar.init_health(health)
 
 func drop_machine_parts() -> void:
 	
@@ -24,7 +27,7 @@ func drop_machine_parts() -> void:
 		if (machine_parts.has_method("civilian_drops")):
 			machine_parts.civilian_drops()
 func _physics_process(delta: float) -> void:
-
+	
 	if is_dead:
 		return
 	die()
@@ -49,14 +52,16 @@ func _on_timer_timeout() -> void:
 	
 	
 func take_damage() -> void:
-	
 	health -= damage
-	print(health)
+	fuel_bar.health = health
+	
+	
 
 func die() -> void:
 	if (health < 0.5):
-		print("one guy died")
+		
 		is_dead = true
+		dps_timer.stop()
 		drop_machine_parts()
 		animated_sprite_2d.play("Death")
 		if animation_timer.is_stopped():

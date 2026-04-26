@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://04pfca1oegt5" path="res://Assets/military_man1.png" id="2_c2ww4"]
 [ext_resource type="Texture2D" uid="uid://brdq3i1ce5uo7" path="res://Assets/military_man2.png" id="2_ta2g1"]
 [ext_resource type="Texture2D" uid="uid://cx576f52s06w2" path="res://Assets/military_man3.png" id="3_5uilc"]
+[ext_resource type="PackedScene" uid="uid://dpup1p3gtnqmn" path="res://Scenes/fuel_bar.tscn" id="5_5uilc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nvfwk"]
 atlas = ExtResource("2_ta2g1")
@@ -75,6 +76,13 @@ shape = SubResource("CapsuleShape2D_c2ww4")
 [node name="AnimationTimer" type="Timer" parent="." unique_id=269860056]
 wait_time = 2.0
 one_shot = true
+
+[node name="FuelBar" parent="." unique_id=1093010173 instance=ExtResource("5_5uilc")]
+offset_left = -16.666664
+offset_top = -26.66667
+offset_right = 223.33334
+offset_bottom = -6.66667
+scale = Vector2(0.119999945, 0.119999886)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="dps timer" to="." method="_on_dps_timer_timeout"]
