@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://05u7r1wo6m62"]
+
+[ext_resource type="Script" uid="uid://bxkej8au4tly2" path="res://Scripts/main_menu.gd" id="1_28flt"]
+[ext_resource type="PackedScene" uid="uid://dscn1gr237sk3" path="res://Scenes/scene_transition.tscn" id="2_48xlc"]
+[ext_resource type="Texture2D" uid="uid://dkcdxf1ocr3h3" path="res://Assets/Future_Androids_Destroy_The_World.png" id="3_1ehe0"]
+
+[node name="Main Menu" type="Node2D" unique_id=1833107330]
+script = ExtResource("1_28flt")
+
+[node name="Control" type="Control" parent="." unique_id=1990506574]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Start" type="Button" parent="Control" unique_id=1780263180]
+layout_mode = 0
+offset_left = 452.0
+offset_top = 284.00006
+offset_right = 551.0
+offset_bottom = 338.00006
+scale = Vector2(2.5451002, 2.5451002)
+text = "Begin
+Destruction"
+
+[node name="Quit" type="Button" parent="Control" unique_id=449053599]
+layout_mode = 0
+offset_left = 485.99997
+offset_top = 484.99994
+offset_right = 562.0
+offset_bottom = 539.0
+scale = Vector2(2.5200033, 1.8533336)
+text = "Give Up 
+"
+
+[node name="ColorRect" parent="." unique_id=857565887 instance=ExtResource("2_48xlc")]
+visible = false
+scale = Vector2(28.88069, 16.24395)
+
+[node name="fade_timer" type="Timer" parent="ColorRect" unique_id=926116136]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1816564541]
+z_index = -2
+position = Vector2(583, 321)
+scale = Vector2(0.59999967, 0.59999967)
+texture = ExtResource("3_1ehe0")
+
+[connection signal="pressed" from="Control/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Control/Quit" to="." method="_on_quit_pressed"]
+[connection signal="timeout" from="ColorRect/fade_timer" to="." method="_on_fade_timer_timeout"]

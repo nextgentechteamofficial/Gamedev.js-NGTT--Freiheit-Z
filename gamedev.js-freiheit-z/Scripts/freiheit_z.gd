@@ -32,7 +32,7 @@ func check_if_won():
 		has_won = true
 	
 	if has_won == true:
-		pass
+		queue_free()
 func unlock_weapon_for_level(lvl: int) -> void:
 	match lvl:
 		1: weapon_state = weaponState.ONE
@@ -51,7 +51,7 @@ func handle_current_weapons() -> void:
 			grenade_shot()
 func collect_parts(fuel_amount: float, xp_amount: int) -> void:
 	current_xp += xp_amount
-	total_xp += current_xp
+	total_xp += xp_amount
 	fuel += fuel_amount
 	fuel_bar.health = fuel
 	xp_bar.health = current_xp
