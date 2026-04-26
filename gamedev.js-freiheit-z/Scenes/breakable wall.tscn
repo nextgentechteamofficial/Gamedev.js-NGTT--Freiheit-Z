@@ -1,5 +1,6 @@
-[gd_scene format=3 uid="uid://yxo47syidddq"]
+[gd_scene format=3 uid="uid://bp6ao7m1wmmn"]
 
+[ext_resource type="Script" uid="uid://bmhv17ueuo6e3" path="res://Scripts/breakable_wall.gd" id="1_2m35r"]
 [ext_resource type="Texture2D" uid="uid://d2rvbc5efkhof" path="res://Assets/BREAKABLE_WALL.png" id="1_dyyk0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ypqmy"]
@@ -20,7 +21,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7r4uk"]
 size = Vector2(130, 129)
 
-[node name="StaticBody2D" type="StaticBody2D" unique_id=59291912]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2m35r"]
+size = Vector2(129, 130)
+
+[node name="Breakable Wall" type="StaticBody2D" unique_id=2110255344]
+collision_layer = 3
+collision_mask = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1758384235]
 sprite_frames = SubResource("SpriteFrames_dyby8")
@@ -28,3 +34,12 @@ sprite_frames = SubResource("SpriteFrames_dyby8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=48167130]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_7r4uk")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1557828842]
+script = ExtResource("1_2m35r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=401502525]
+position = Vector2(1.5, 0)
+shape = SubResource("RectangleShape2D_2m35r")
+
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]

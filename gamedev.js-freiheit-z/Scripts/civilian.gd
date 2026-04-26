@@ -1,31 +1,31 @@
 extends CharacterBody2D
 
 
+
 @export var speed = 300.0
 @export var health = 100.0
 @onready var timer: Timer = $Timer
 @onready var dps_timer: Timer = $"dps timer"
 var damage = 0
 var direction := 1
+var has_dropped := false
 var is_dead :=false
 const MACHINE_PARTS = preload("uid://gciiw2pycb1i")
 
 
 func drop_machine_parts() -> void:
 	
-	if is_dead:
-		print("67")
+	if is_dead and not has_dropped:
+		has_dropped = true
 		var machine_parts = MACHINE_PARTS.instantiate()
 		machine_parts.position = global_position
-		get_parent().add_child(machine_parts)
+		get_tree().current_scene.add_child(machine_parts)
 		if (machine_parts.has_method("civilian_drops")):
 			machine_parts.civilian_drops()
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		return
 	die()
-	drop_machine_parts()
-	
-
-	
 	
 	if direction:
 		velocity.x = direction * speed
@@ -55,6 +55,7 @@ func die() -> void:
 	if (health < 0.5):
 		print("one guy died")
 		is_dead = true
+		drop_machine_parts()
 		queue_free()
 
 

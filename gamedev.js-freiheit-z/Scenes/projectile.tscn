@@ -27,10 +27,12 @@ animations = [{
 radius = 29.0
 height = 130.0
 
-[node name="Projectile" type="Area2D" unique_id=1749481696]
+[node name="Projectile" type="Area2D" unique_id=1749481696 groups=["Projectile"]]
 collision_mask = 3
 script = ExtResource("1_k1cl8")
-attack_cost = 5.0
+speed = 600
+damage = 100
+attack_cost = 30.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=325098599]
 sprite_frames = SubResource("SpriteFrames_5i1ty")

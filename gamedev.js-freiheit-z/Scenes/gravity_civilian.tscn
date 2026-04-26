@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://uhoyy2iohkdx"]
+
+[ext_resource type="Script" uid="uid://s2tfq3bh3trd" path="res://Scripts/gravity_civilian.gd" id="1_3qcd3"]
+[ext_resource type="Texture2D" uid="uid://rgeyjfajqpss" path="res://Assets/civilian1.png" id="2_o53qe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndn5x"]
+atlas = ExtResource("2_o53qe")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aga6d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndn5x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bri51"]
+radius = 12.0
+height = 44.0
+
+[node name="gravity_civilian" type="CharacterBody2D" unique_id=1742035033 groups=["civilians"]]
+position = Vector2(-6, -3)
+scale = Vector2(2, 2)
+collision_mask = 2
+script = ExtResource("1_3qcd3")
+speed = 500.0
+health = 50.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1383252819]
+position = Vector2(-1, 5)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_aga6d")
+
+[node name="Timer" type="Timer" parent="." unique_id=492040664]
+wait_time = 3.327
+one_shot = true
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1584971260]
+position = Vector2(-1, 8)
+shape = SubResource("CapsuleShape2D_bri51")
+
+[node name="dps timer" type="Timer" parent="." unique_id=1998621097]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="dps timer" to="." method="_on_dps_timer_timeout"]
