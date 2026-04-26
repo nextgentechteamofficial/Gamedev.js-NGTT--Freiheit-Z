@@ -19,11 +19,13 @@ radius = 16.0
 height = 126.0
 
 [node name="Freiheit-Z" type="CharacterBody2D" unique_id=800076182 groups=["Player"]]
+z_index = 1
 scale = Vector2(1.5, 1.5)
-collision_layer = 2
+collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_h0cnq")
 speed = 1000.0
+fuel = 200.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=654517139]
 sprite_frames = SubResource("SpriteFrames_06l37")

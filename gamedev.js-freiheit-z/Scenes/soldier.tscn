@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://xk426otl0cqo"]
+
+[ext_resource type="Script" uid="uid://nvydyiooc72v" path="res://Scripts/soldier.gd" id="1_ta2g1"]
+[ext_resource type="Texture2D" uid="uid://04pfca1oegt5" path="res://Assets/military_man1.png" id="2_c2ww4"]
+[ext_resource type="Texture2D" uid="uid://brdq3i1ce5uo7" path="res://Assets/military_man2.png" id="2_ta2g1"]
+[ext_resource type="Texture2D" uid="uid://cx576f52s06w2" path="res://Assets/military_man3.png" id="3_5uilc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvfwk"]
+atlas = ExtResource("2_ta2g1")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhcvx"]
+atlas = ExtResource("3_5uilc")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqink"]
+atlas = ExtResource("2_c2ww4")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ta2g1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvfwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhcvx")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqink")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c2ww4"]
+radius = 12.5
+height = 52.0
+
+[node name="Soldier" type="CharacterBody2D" unique_id=1742035033 groups=["civilians"]]
+position = Vector2(-6, -3)
+scale = Vector2(1.5, 1.5)
+collision_mask = 2
+script = ExtResource("1_ta2g1")
+speed = 150.0
+health = 200.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1383252819]
+position = Vector2(-1, 5)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_ta2g1")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.36871746
+
+[node name="Timer" type="Timer" parent="." unique_id=492040664]
+wait_time = 3.327
+one_shot = true
+autostart = true
+
+[node name="dps timer" type="Timer" parent="." unique_id=1998621097]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1390064509]
+position = Vector2(-1.5, 4.5)
+shape = SubResource("CapsuleShape2D_c2ww4")
+
+[node name="AnimationTimer" type="Timer" parent="." unique_id=269860056]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="dps timer" to="." method="_on_dps_timer_timeout"]
+[connection signal="timeout" from="AnimationTimer" to="." method="_on_animation_timer_timeout"]
