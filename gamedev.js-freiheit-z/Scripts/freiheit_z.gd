@@ -8,8 +8,10 @@ const PROJECTILE = preload("uid://dbnijstff0fso")
 const GRENADE = preload("uid://bmun4t8ibvmye")
 const AXE = preload("uid://csb56d5flb8vd")
 
-
+var has_won := false
 @export var fuel = 100.0
+@export var fuel_max := 200.0
+@export var xp_to_win := 6700
 @export var fuel_usagerate = 2.0
 @onready var timer: Timer = $Timer
 @export var lvl_max := 3
@@ -17,10 +19,17 @@ const AXE = preload("uid://csb56d5flb8vd")
 @onready var treiheit_axe: Node2D = $treiheit_axe
 var current_lvl := 1
 var current_xp := 0
+var total_xp := 0
 
 enum weaponState {ONE, TWO, THREE}
 var weapon_state = weaponState.ONE
 
+func check_if_won():
+	if total_xp >= xp_to_win:
+		has_won = true
+	
+	if has_won == true:
+		queue_free()
 func unlock_weapon_for_level(lvl: int) -> void:
 	match lvl:
 		1: weapon_state = weaponState.ONE
@@ -39,8 +48,11 @@ func handle_current_weapons() -> void:
 			grenade_shot()
 func collect_parts(fuel_amount: float, xp_amount: int) -> void:
 	current_xp += xp_amount
+	total_xp += current_xp
 	fuel += fuel_amount
-	
+func stablize_fuel():
+	if fuel >= fuel_max:
+		fuel = fuel_max
 func lvl_up() -> void:
 	if (current_xp >= xp_needed and current_lvl < lvl_max):
 		print("leveled up")
@@ -117,7 +129,10 @@ func is_melee() -> bool:
 	return is_melee
 
 func _physics_process(delta: float) -> void:
-
+	print(fuel)
+	print(current_xp)
+	stablize_fuel()
+	check_if_won()
 	lvl_up()
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

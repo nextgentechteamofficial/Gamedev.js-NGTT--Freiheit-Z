@@ -24,6 +24,7 @@ func drop_machine_parts() -> void:
 		if (machine_parts.has_method("civilian_drops")):
 			machine_parts.civilian_drops()
 func _physics_process(delta: float) -> void:
+
 	if is_dead:
 		return
 	die()
@@ -65,11 +66,17 @@ func die() -> void:
 
 func _on_dps_timer_timeout() -> void:
 	take_damage()
+	dps_timer.start()
 func start_dps_timer() -> void:
-	if (dps_timer.is_stopped()):
-		dps_timer.start()
+	dps_timer.start()
+
 func set_damage(damage2: int) -> void:
-	damage = damage2
+	damage += damage2
+func remove_damage(damage2: int) -> void:
+	damage -= damage2
+	if damage <= 0:
+		damage = 0
+		dps_timer.stop()
 	
 
 	

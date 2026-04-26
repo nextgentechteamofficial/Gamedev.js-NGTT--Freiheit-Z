@@ -52,3 +52,9 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_timer_timeout() -> void:
 	queue_free()# Replace with function body.
+
+
+func _on_body_exited(body: Node2D) -> void:
+	if body.is_in_group("civilians"):
+		if body.has_method("remove_damage"):
+			body.remove_damage(damage)

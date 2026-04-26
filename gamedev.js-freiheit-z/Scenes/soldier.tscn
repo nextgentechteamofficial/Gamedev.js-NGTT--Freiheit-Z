@@ -65,6 +65,7 @@ one_shot = true
 autostart = true
 
 [node name="dps timer" type="Timer" parent="." unique_id=1998621097]
+wait_time = 0.1
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1390064509]

@@ -8,11 +8,10 @@ extends Area2D
 @export var timer_time := 1
 
 func _ready() -> void:
-	print("ready")
 	collision_shape_2d.disabled = true
 	animated_sprite_2d.visible = false
 	timer.wait_time = timer_time
-	print("200 pump")
+	
 	
 
 func _on_body_entered(body: Node2D) -> void:
@@ -32,3 +31,9 @@ func _on_timer_timeout() -> void:
 func start_timer() -> void:
 	if timer.is_stopped():
 		timer.start()
+
+
+func _on_body_exited(body: Node2D) -> void:
+	if body.is_in_group("civilians"):
+		if body.has_method("remove_damage"):
+			body.remove_damage(damage)

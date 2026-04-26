@@ -13,8 +13,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lhqmx"]
-radius = 46.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyoev"]
+size = Vector2(119.83334, 91.66667)
 
 [node name="floating_building" type="StaticBody2D" unique_id=1837378663]
 scale = Vector2(6, 6)
@@ -24,5 +24,5 @@ collision_layer = 3
 sprite_frames = SubResource("SpriteFrames_amjqv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=560142647]
-position = Vector2(-2, -3)
-shape = SubResource("CircleShape2D_lhqmx")
+position = Vector2(-1.5833328, -4.333334)
+shape = SubResource("RectangleShape2D_uyoev")
