@@ -1,6 +1,6 @@
 extends Area2D
-@export var fuel_amount := 0.5
-@export var xp_amount := 10
+@export var fuel_amount := 10
+@export var xp_amount := 2000
 func civilian_drops() -> void:
 	pass
 func _ready() -> void:
