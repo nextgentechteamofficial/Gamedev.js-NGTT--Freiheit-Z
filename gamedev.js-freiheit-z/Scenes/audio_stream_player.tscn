@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dgl1fr17asaw3"]
+
+[ext_resource type="AudioStream" uid="uid://ddqy8q2kqrg0m" path="res://Assets/tempbeat2 loop2.mp3" id="1_px1li"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" unique_id=1694618938]
+stream = ExtResource("1_px1li")
+volume_db = -9.123

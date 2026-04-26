@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cbjg2dt4t35ea"
+path="res://.godot/imported/newgen_2 with ending.mp3-6107cb88ff3b544d607eeb7a2891a037.mp3str"
+
+[deps]
+
+source_file="res://Assets/newgen_2 with ending.mp3"
+dest_files=["res://.godot/imported/newgen_2 with ending.mp3-6107cb88ff3b544d607eeb7a2891a037.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
