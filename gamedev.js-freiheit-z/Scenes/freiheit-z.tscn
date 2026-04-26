@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://deukd8shjw1jh" path="res://Scripts/freiheit_z.gd" id="1_h0cnq"]
 [ext_resource type="Texture2D" uid="uid://fdg7sxhnda3v" path="res://Assets/FreiHeit-Z.png" id="2_h0cnq"]
+[ext_resource type="PackedScene" uid="uid://dpup1p3gtnqmn" path="res://Scenes/fuel_bar.tscn" id="3_7r1gu"]
+[ext_resource type="PackedScene" uid="uid://b4iwmfb8las5u" path="res://Scenes/XP_Bar.tscn" id="4_18rav"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_06l37"]
 animations = [{
@@ -17,6 +19,11 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_savud"]
 radius = 16.0
 height = 126.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_18rav"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xlumn"]
+bg_color = Color(0.4995367, 0.3934212, 0.0960369, 1)
 
 [node name="Freiheit-Z" type="CharacterBody2D" unique_id=800076182 groups=["Player"]]
 z_index = 1
@@ -43,5 +50,39 @@ collide_with_areas = true
 one_shot = true
 
 [node name="treiheit_axe" type="Node2D" parent="." unique_id=1606574670]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=276873657]
+offset_left = -109.333336
+offset_top = -114.0
+offset_right = -69.333336
+offset_bottom = -74.0
+text = "FUEL"
+
+[node name="FuelBar" parent="." unique_id=1093010173 instance=ExtResource("3_7r1gu")]
+offset_left = -110.0
+offset_top = -93.333336
+offset_right = 130.0
+offset_bottom = -73.333336
+theme_override_styles/background = SubResource("StyleBoxEmpty_18rav")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xlumn")
+show_percentage = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2134136344]
+
+[node name="XP_Bar" parent="CanvasLayer" unique_id=1292154056 instance=ExtResource("4_18rav")]
+offset_left = 28.000002
+offset_top = 53.000008
+offset_right = 268.0
+offset_bottom = 73.00001
+scale = Vector2(1.4199758, 1.4397477)
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer" unique_id=1903710457]
+offset_left = 4.000004
+offset_top = 13.0
+offset_right = 224.0
+offset_bottom = 36.0
+scale = Vector2(1.410147, 1.410147)
+text = "XP POINTS (2000 TO LVL UP)"
+fit_content = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

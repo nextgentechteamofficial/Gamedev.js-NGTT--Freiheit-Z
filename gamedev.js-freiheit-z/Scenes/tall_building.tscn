@@ -14,7 +14,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fl1iq"]
-size = Vector2(42, 118)
+size = Vector2(48.5, 126.40002)
 
 [node name="tall_building" type="StaticBody2D" unique_id=567137181]
 scale = Vector2(10, 10)
@@ -24,5 +24,6 @@ collision_layer = 3
 sprite_frames = SubResource("SpriteFrames_o7ijv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1073996381]
-position = Vector2(-8, 0)
+position = Vector2(-7.6499996, -0.10000037)
+scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_fl1iq")

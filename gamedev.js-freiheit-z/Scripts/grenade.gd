@@ -36,7 +36,6 @@ func _on_body_entered(body: Node2D) -> void:
 			if body.has_method("set_damage"):
 		
 				body.set_damage(damage)
-				
 			if body.has_method("start_dps_timer"):
 				
 				body.start_dps_timer()

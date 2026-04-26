@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://s2tfq3bh3trd" path="res://Scripts/gravity_civilian.gd" id="1_3qcd3"]
 [ext_resource type="Texture2D" uid="uid://rgeyjfajqpss" path="res://Assets/civilian1.png" id="2_o53qe"]
+[ext_resource type="PackedScene" uid="uid://dpup1p3gtnqmn" path="res://Scenes/fuel_bar.tscn" id="3_o53qe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ndn5x"]
 atlas = ExtResource("2_o53qe")
@@ -48,6 +49,13 @@ shape = SubResource("CapsuleShape2D_bri51")
 [node name="dps timer" type="Timer" parent="." unique_id=1998621097]
 wait_time = 0.1
 one_shot = true
+
+[node name="FuelBar" parent="." unique_id=1093010173 instance=ExtResource("3_o53qe")]
+offset_left = -11.0
+offset_top = -20.5
+offset_right = 229.0
+offset_bottom = -0.5
+scale = Vector2(0.08406229, 0.25645876)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="dps timer" to="." method="_on_dps_timer_timeout"]

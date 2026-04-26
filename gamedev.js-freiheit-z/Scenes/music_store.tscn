@@ -14,10 +14,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q7qv0"]
-size = Vector2(88, 49)
+size = Vector2(96.833336, 54.5)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3cb52"]
-height = 74.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tun3y"]
+size = Vector2(40.833332, 80.66667)
 
 [node name="music_store" type="StaticBody2D" unique_id=754281841]
 scale = Vector2(6, 6)
@@ -27,10 +27,10 @@ collision_layer = 3
 sprite_frames = SubResource("SpriteFrames_ontv8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=325766224]
-position = Vector2(0, 25.5)
+position = Vector2(-0.7500019, 28.25)
 shape = SubResource("RectangleShape2D_q7qv0")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1996867340]
-position = Vector2(-1, -37)
+position = Vector2(-0.66666424, -34.083336)
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_3cb52")
+shape = SubResource("RectangleShape2D_tun3y")

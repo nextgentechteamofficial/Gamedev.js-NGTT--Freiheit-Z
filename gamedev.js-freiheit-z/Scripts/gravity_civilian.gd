@@ -12,8 +12,11 @@ var direction := 1
 var has_dropped := false
 var is_dead :=false
 const MACHINE_PARTS = preload("uid://gciiw2pycb1i")
+@onready var fuel_bar: ProgressBar = $FuelBar
 
 
+func _ready() -> void:
+	fuel_bar.init_health(health)
 func drop_machine_parts() -> void:
 	
 	if is_dead and not has_dropped:
@@ -55,12 +58,14 @@ func _on_timer_timeout() -> void:
 func take_damage() -> void:
 	
 	health -= damage
-	print(health)
+	fuel_bar.health = health
+
 
 func die() -> void:
 	if (health < 0.5):
-		print("one guy died")
+		
 		is_dead = true
+		dps_timer.stop()
 		drop_machine_parts()
 		queue_free()
 

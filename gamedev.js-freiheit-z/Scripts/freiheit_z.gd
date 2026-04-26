@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 @onready var freiheit_z: CharacterBody2D = $"."
 @export var speed = 500.0
 @export var jump_velocity = -400.0
@@ -7,6 +8,8 @@ extends CharacterBody2D
 const PROJECTILE = preload("uid://dbnijstff0fso")
 const GRENADE = preload("uid://bmun4t8ibvmye")
 const AXE = preload("uid://csb56d5flb8vd")
+@onready var fuel_bar: ProgressBar = $FuelBar
+@onready var xp_bar: ProgressBar = $CanvasLayer/XP_Bar
 
 var has_won := false
 @export var fuel = 100.0
@@ -29,7 +32,7 @@ func check_if_won():
 		has_won = true
 	
 	if has_won == true:
-		queue_free()
+		pass
 func unlock_weapon_for_level(lvl: int) -> void:
 	match lvl:
 		1: weapon_state = weaponState.ONE
@@ -50,6 +53,8 @@ func collect_parts(fuel_amount: float, xp_amount: int) -> void:
 	current_xp += xp_amount
 	total_xp += current_xp
 	fuel += fuel_amount
+	fuel_bar.health = fuel
+	xp_bar.health = current_xp
 func stablize_fuel():
 	if fuel >= fuel_max:
 		fuel = fuel_max
@@ -90,6 +95,9 @@ func aiming(delta: float) -> void:
 func _ready() -> void:
 	treiheit_axe = AXE.instantiate()
 	add_child(treiheit_axe)
+	fuel_bar.init_health(fuel)
+	xp_bar.init_health(current_xp, xp_needed)
+	
 
 func axe_attack() -> void:
 	
@@ -129,8 +137,7 @@ func is_melee() -> bool:
 	return is_melee
 
 func _physics_process(delta: float) -> void:
-	print(fuel)
-	print(current_xp)
+	
 	stablize_fuel()
 	check_if_won()
 	lvl_up()
@@ -162,3 +169,5 @@ func fuel_death() -> void:
 
 func _on_timer_timeout() -> void:
 	fuel -= fuel_usagerate
+	fuel_bar.health = fuel
+	xp_bar.health = current_xp
