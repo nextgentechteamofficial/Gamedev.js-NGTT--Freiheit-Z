@@ -43,6 +43,7 @@ position = Vector2(-1, 8)
 shape = SubResource("CapsuleShape2D_3cr5q")
 
 [node name="dps timer" type="Timer" parent="." unique_id=1998621097]
+wait_time = 0.1
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

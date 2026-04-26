@@ -1,36 +1,37 @@
 extends CharacterBody2D
 
 
+
 @export var speed = 300.0
 @export var health = 100.0
 @onready var timer: Timer = $Timer
 @onready var dps_timer: Timer = $"dps timer"
-@export var gravity_strength := 100
+@export var gravity_strength := 30
 var damage = 0
 var direction := 1
+var has_dropped := false
 var is_dead :=false
 const MACHINE_PARTS = preload("uid://gciiw2pycb1i")
 
 
 func drop_machine_parts() -> void:
 	
-	if is_dead:
-		print("67")
+	if is_dead and not has_dropped:
+		has_dropped = true
 		var machine_parts = MACHINE_PARTS.instantiate()
 		machine_parts.position = global_position
 		get_tree().current_scene.add_child(machine_parts)
 		if (machine_parts.has_method("civilian_drops")):
 			machine_parts.civilian_drops()
 func gravity(delta: float) -> void:
+
 	if not is_on_floor():
 		velocity.y += gravity_strength * delta
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		return
 	die()
-	drop_machine_parts()
 	gravity(delta)
-	
-
-	
 	
 	if direction:
 		velocity.x = direction * speed
@@ -60,16 +61,23 @@ func die() -> void:
 	if (health < 0.5):
 		print("one guy died")
 		is_dead = true
+		drop_machine_parts()
 		queue_free()
 
 
 func _on_dps_timer_timeout() -> void:
 	take_damage()
+	dps_timer.start()
 func start_dps_timer() -> void:
-	if (dps_timer.is_stopped()):
-		dps_timer.start()
+	dps_timer.start()
 func set_damage(damage2: int) -> void:
-	damage = damage2
+	damage += damage2
+
+func remove_damage(damage2: int) -> void:
+	damage -= damage2
+	if damage <= 0:
+		damage = 0
+		dps_timer.stop()
 	
 
 	
