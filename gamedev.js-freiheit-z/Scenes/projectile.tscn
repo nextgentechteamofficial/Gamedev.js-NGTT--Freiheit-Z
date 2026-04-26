@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://dbnijstff0fso"]
 
 [ext_resource type="Script" uid="uid://voj7h33wpehu" path="res://Scripts/projectile.gd" id="1_k1cl8"]
+[ext_resource type="Texture2D" uid="uid://ga0cbmxlg6sv" path="res://Assets/projectile_explosion_sprite2.png" id="3_tl4hk"]
 [ext_resource type="Texture2D" uid="uid://ddaqmr8ishn8p" path="res://Assets/projectile_explosion_sprite1.png" id="3_y0kec"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y0kec"]
 atlas = ExtResource("3_y0kec")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4467"]
+atlas = ExtResource("3_tl4hk")
 region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5i1ty"]
@@ -17,9 +22,12 @@ animations = [{
 "name": &"Projectile",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4467")
+}],
 "loop": true,
-"name": &"new_animation",
+"name": &"animation",
 "speed": 5.0
 }]
 
@@ -35,8 +43,10 @@ damage = 100
 attack_cost = 30.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=325098599]
+position = Vector2(1.5000019, 0.012189865)
+scale = Vector2(0.9453125, 0.43769047)
 sprite_frames = SubResource("SpriteFrames_5i1ty")
-animation = &"Projectile"
+animation = &"animation"
 autoplay = "Projectile"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1197634961]

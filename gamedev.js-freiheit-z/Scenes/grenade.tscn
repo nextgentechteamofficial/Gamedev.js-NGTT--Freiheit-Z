@@ -2,23 +2,31 @@
 
 [ext_resource type="Script" uid="uid://cer6yfnw5plek" path="res://Scripts/grenade.gd" id="1_5rnft"]
 [ext_resource type="Texture2D" uid="uid://hg1jqaac552y" path="res://Assets/Grenade.png" id="2_5rnft"]
+[ext_resource type="Texture2D" uid="uid://ga0cbmxlg6sv" path="res://Assets/projectile_explosion_sprite2.png" id="2_ft0g1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5rnft"]
 radius = 29.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_20vs5"]
+atlas = ExtResource("2_ft0g1")
+region = Rect2(0, 0, 128, 128)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ft0g1"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20vs5")
+}],
+"loop": true,
+"name": &"Explosion",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_5rnft")
 }],
 "loop": true,
 "name": &"Projectile",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"new_animation",
 "speed": 5.0
 }]
 
@@ -40,8 +48,9 @@ collision_layer = 0
 shape = SubResource("CircleShape2D_5rnft")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D" unique_id=325098599]
+scale = Vector2(0.3828125, 0.3828125)
 sprite_frames = SubResource("SpriteFrames_ft0g1")
-animation = &"Projectile"
+animation = &"Explosion"
 autoplay = "Projectile"
 
 [node name="Timer" type="Timer" parent="." unique_id=2062624973]
