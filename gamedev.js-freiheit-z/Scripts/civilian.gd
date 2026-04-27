@@ -7,12 +7,13 @@ extends CharacterBody2D
 @onready var dps_timer: Timer = $"dps timer"
 var damage = 0
 var direction := 1
+var is_dead :=false
 const MACHINE_PARTS = preload("uid://gciiw2pycb1i")
 
 
 func drop_machine_parts() -> void:
 	
-	if Input.is_action_just_pressed("Debug"):
+	if is_dead:
 		print("67")
 		var machine_parts = MACHINE_PARTS.instantiate()
 		machine_parts.position = global_position
@@ -53,6 +54,7 @@ func take_damage() -> void:
 func die() -> void:
 	if (health < 0.5):
 		print("one guy died")
+		is_dead = true
 		queue_free()
 
 
