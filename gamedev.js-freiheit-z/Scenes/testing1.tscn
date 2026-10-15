@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://bpq2bhy1uh0gk"]
+
+[ext_resource type="PackedScene" uid="uid://nrc57ehe7ch1" path="res://Scenes/freiheit-z.tscn" id="1_iofnx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v570x"]
+size = Vector2(1111.5, 772.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iofnx"]
+size = Vector2(457.75, 232)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qan4d"]
+size = Vector2(1111.5, 772.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_any8b"]
+size = Vector2(498.75, 222.25)
+
+[node name="Node2D" type="Node2D" unique_id=1617196801]
+
+[node name="building block" type="StaticBody2D" parent="." unique_id=487577570]
+collision_layer = 3
+collision_mask = 7
+
+[node name="ColorRect" type="ColorRect" parent="building block" unique_id=2084780706]
+offset_left = -11.0
+offset_top = -132.0
+offset_right = 1150.0
+offset_bottom = 639.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="building block" unique_id=828375363]
+position = Vector2(570.5, 254.5)
+shape = SubResource("RectangleShape2D_v570x")
+
+[node name="building block2" type="StaticBody2D" parent="." unique_id=784571987]
+position = Vector2(-1312, -4)
+collision_layer = 3
+collision_mask = 7
+
+[node name="ColorRect" type="ColorRect" parent="building block2" unique_id=519890369]
+offset_left = 2466.0
+offset_top = -371.0
+offset_right = 2960.0
+offset_bottom = -132.0
+color = Color(1, 0.019607844, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="building block2" unique_id=1316039188]
+position = Vector2(2675, -245)
+shape = SubResource("RectangleShape2D_iofnx")
+
+[node name="building block3" type="StaticBody2D" parent="." unique_id=792004591]
+position = Vector2(1393, -56)
+collision_layer = 3
+collision_mask = 7
+
+[node name="ColorRect" type="ColorRect" parent="building block3" unique_id=1074459904]
+offset_left = 1133.0
+offset_top = -432.0
+offset_right = 2294.0
+offset_bottom = 339.0
+color = Color(1, 0.019607844, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="building block3" unique_id=1657626271]
+position = Vector2(1699, -27)
+shape = SubResource("RectangleShape2D_qan4d")
+
+[node name="building block4" type="StaticBody2D" parent="." unique_id=1427520552]
+position = Vector2(-2690, 104)
+collision_layer = 3
+collision_mask = 7
+
+[node name="ColorRect" type="ColorRect" parent="building block4" unique_id=1957177334]
+offset_left = 2210.0
+offset_top = -419.0
+offset_right = 2698.0
+offset_bottom = -223.0
+color = Color(1, 0.019607844, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="building block4" unique_id=1649060386]
+position = Vector2(2453, -327)
+shape = SubResource("RectangleShape2D_any8b")
+
+[node name="Freiheit-Z" parent="." unique_id=800076182 instance=ExtResource("1_iofnx")]
+position = Vector2(596, -243)
